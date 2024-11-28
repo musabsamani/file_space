@@ -33,7 +33,7 @@ export const router = (app: express.Application) => {
   app.use(express.json());
 
   // for serving static files on /public
-  app.use(express.static("public"));
+  app.use(express.static(uploadDir));
 
   // for parsing application/x-www-form-urlencoded
   app.use(express.urlencoded({ extended: true }));

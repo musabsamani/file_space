@@ -79,11 +79,12 @@ export const upload = async (req: Request, res: Response) => {
     const user: any = (req as any).user;
 
     // check if file is present in the request body
-    // if (!file) {
-    //   throw new HttpError({ message: "No file uploaded", statusCode: 400 });
-    // }
+    if (!file) {
+      throw new HttpError({ message: "No file uploaded", statusCode: 400 });
+    }
 
     const { tags } = req.body;
+    const fileUrl = file.filename;
 
     console.log(file);
     // Return file information
@@ -91,7 +92,7 @@ export const upload = async (req: Request, res: Response) => {
       createResponseObject({
         data: {
           message: "File uploaded successfully",
-          // publicUrl,
+          fileUrl,
           tags,
           file: req.file, // 'file' will contain file details
         },
