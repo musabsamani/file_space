@@ -3,11 +3,11 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom';
 import { yupResolver } from "@hookform/resolvers/yup";
+import ApiError from '../../errors/ApiError';
 import Input from '../../components/_include/forms/_input'
 import CheckBox from '../../components/_include/forms/_checkbox'
 import { userRegistrationSchema } from '../../validations/user';
 import { registerUser } from '../../services/api';
-import ApiError from '../../errors/ApiError';
 import { useMyContext } from '../../context/ContextProvider'
 
 const RegistrationForm = () => {
