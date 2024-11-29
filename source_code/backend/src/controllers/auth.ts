@@ -24,12 +24,12 @@ const userService = new UserService();
  */
 export const register = async (req: Request, res: Response) => {
   try {
-    const { name, username, email, password } = req.body as IUser;
+    const { fullname, username, email, password } = req.body as IUser;
 
     // call user service in the database layer
-    const newUser = await userService.registerUser({ name, username, email, password });
+    const newUser = await userService.registerUser({ fullname, username, email, password });
 
-    res.json(createResponseObject({ data: { message: "User created successfully", user: newUser } }));
+    res.json(createResponseObject({ data: newUser }));
   } catch (error) {
     handleContollerError({ error, res, defaultErrorMessage: "user registration failed" });
   }
@@ -64,9 +64,9 @@ export const login = async (req: Request, res: Response) => {
     res
       .status(200)
       .setHeader("Authorization", `Bearer ${token}`)
-      .json(createResponseObject({ data: userWithoutPassword }));
+      .json(createResponseObject({ data: { user: userWithoutPassword, token } }));
   } catch (error) {
-    handleContollerError({ error, res, defaultErrorMessage: "user registration failed" });
+    handleContollerError({ error, res, defaultErrorMessage: "user login failed" });
   }
 };
 

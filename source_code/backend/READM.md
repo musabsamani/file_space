@@ -70,12 +70,12 @@ The application creates an `uploads` folder automatically in the project root if
 - **Description**: Register a new user.
 - **Request Body**:
 
-  ```json
+```json
   {
     "username": "user123",
     "password": "password123"
   }
-  ```
+```
 
 - **Response**: `200 OK` on success.
 
@@ -84,20 +84,20 @@ The application creates an `uploads` folder automatically in the project root if
 - **Description**: Login and get a JWT token.
 - **Request Body**:
 
-  ```json
+```json
   {
     "username": "user123",
     "password": "password123"
   }
-  ```
+```
 
 - **Response**:
 
-  ```json
+```json
   {
     "token": "your-jwt-token"
   }
-  ```
+```
 
 ### 3. **POST /upload**
 
@@ -114,7 +114,7 @@ The application creates an `uploads` folder automatically in the project root if
 - **Authorization**: Bearer token required.
 - **Response**: JSON array of file objects:
 
-  ```json
+```json
   [
     {
       "filename": "file123.jpg",
@@ -122,7 +122,7 @@ The application creates an `uploads` folder automatically in the project root if
       "tags": ["nature", "vacation"]
     }
   ]
-  ```
+```
 
 ### 5. **GET /public/:filename**
 

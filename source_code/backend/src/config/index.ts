@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const apiUrls = {
-  baseUrl: process.env.BASE_URL || "http://localhost:3000",
+  backendBaseUrl: process.env.BACK_END_BASE_URL || "http://localhost:3000",
+  frontendUrl: process.env.FRONTEND_URL || "http://localhost:3000",
 };
 
 // Server port

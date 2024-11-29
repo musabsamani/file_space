@@ -15,21 +15,21 @@ export class UserService {
    * This function checks if a user with the given email or username already exists.
    * If not, it hashes the password and creates a new user entry in the database.
    *
-   * @param {IUser} param0 - An object containing user details: email, password, name, and username.
+   * @param {IUser} param0 - An object containing user details: email, password, fullname, and username.
    * @returns {Promise<IUserResponseDTO | never>} - The newly created user data without the password.
    * @throws {HttpError} - If the user already exists or if a database error occurs.
    */
-  public async registerUser({ email, password, name, username }: IUser): Promise<IUserResponseDTO | never> {
+  public async registerUser({ email, password, fullname, username }: IUser): Promise<IUserResponseDTO | never> {
     try {
       const existingUserEmail = await User.findOne({ email });
       const existingUsername = await User.findOne({ username });
 
-      if (existingUserEmail) throw new HttpError({ message: "user already exists, duplicted email" });
-      if (existingUsername) throw new HttpError({ message: "user already exists, duplicted username" });
+      if (existingUserEmail) throw new HttpError({ message: "user already exists, duplicted email", statusCode: 400 });
+      if (existingUsername) throw new HttpError({ message: "user already exists, duplicted username", statusCode: 400 });
 
       const hashedPassword = await bcrypt.hash(password, SALT);
 
-      const newUser = await User.create({ name, username, email, password: hashedPassword });
+      const newUser = await User.create({ fullname, username, email, password: hashedPassword });
 
       // Exclude the password from the response
       const { password: _password, ...newUserWithoutPassword } = newUser.toObject();

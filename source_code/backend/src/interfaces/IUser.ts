@@ -2,7 +2,7 @@
  * Interface for user object
  */
 export interface IUser {
-  name: string;
+  fullname: string;
   username: string;
   email: string;
   password: string;
@@ -12,7 +12,7 @@ export interface IUser {
  */
 export interface IUserResponseDTO {
   // _id: string;
-  name: string;
+  fullname: string;
   username: string;
   email: string;
   // __v?: number;

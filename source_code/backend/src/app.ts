@@ -39,7 +39,7 @@ export const router = (app: express.Application) => {
   app.use(express.urlencoded({ extended: true }));
 
   // for enabling cors
-  app.use(cors({ origin: apiUrls.baseUrl, credentials: true }));
+  app.use(cors({ origin: apiUrls.frontendUrl, credentials: true }));
 
   // for handling incomming requests from the client to /api/v1 routes
   app.use("/api/v1", routes);
