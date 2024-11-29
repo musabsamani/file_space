@@ -1,27 +1,33 @@
 import axios from 'axios';
-import { REACT_APP_API_URL } from '../constants';
-// import dotenv from 'dotenv';
-// dotenv.config();
+import { apiUrls } from '../config';
+import ApiError from '../errors/ApiError';
 
-const API_URL = REACT_APP_API_URL;
 
-export const registerUser = async (username, password) => {
+export const registerUser = async (data) => {
   try {
-    const response = await axios.post(`${API_URL}/auth/register`, { username, password });
-    return response.data;
+    const response = await axios.post(apiUrls.register, data);
+    return response;
   } catch (error) {
-    console.error("Error registering user", error);
-    throw error;
+    console.error("API RegisterUser Service error", error);
+    if (error.response.data.error) {
+      throw new ApiError({ message: error.response.data.error.message, details: error.response.data.error.details })
+    } else {
+      throw error;
+    }
   }
 };
 
-export const loginUser = async (username, password) => {
+export const loginUser = async ({ usernameOrEmail, password }) => {
   try {
-    const response = await axios.post(`${API_URL}/auth/login`, { username, password });
-    return response.data;
+    const response = await axios.post(apiUrls.login, { usernameOrEmail, password });
+    return response;
   } catch (error) {
-    console.error("Error logging in", error);
-    throw error;
+    console.error("API LoginUser Service error", error);
+    if (error.response.data.error) {
+      throw new ApiError({ message: error.response.data.error.message, details: error.response.data.error.details })
+    } else {
+      throw error;
+    }
   }
 };
 
@@ -31,7 +37,7 @@ export const uploadFile = async (file, tags, token) => {
   formData.append('tags', tags);
 
   try {
-    const response = await axios.post(`${API_URL}/files/upload`, formData, {
+    const response = await axios.post(apiUrls.upload, formData, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
@@ -46,7 +52,7 @@ export const uploadFile = async (file, tags, token) => {
 
 export const getFiles = async (token) => {
   try {
-    const response = await axios.get(`${API_URL}/files`, {
+    const response = await axios.get(apiUrls.viewFile, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
@@ -60,7 +66,7 @@ export const getFiles = async (token) => {
 
 export const viewFile = async (fileId) => {
   try {
-    const response = await axios.get(`${API_URL}/files/view/${fileId}`);
+    const response = await axios.get(`${apiUrls.viewFile}/${fileId}`);
     return response.data;
   } catch (error) {
     console.error("Error viewing file", error);
