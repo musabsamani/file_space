@@ -8,12 +8,19 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@fontsource/roboto": "^5.1.0",
     "@fortawesome/fontawesome-free": "^6.7.1",
     "@hookform/resolvers": "^3.9.1",
+    "@mui/icons-material": "^6.1.10",
+    "@mui/material": "^6.1.10",
+    "@types/config": "^3.3.5",
     "axios": "^1.7.8",
+    "config": "^3.3.12",
     "dotenv": "^16.4.5",
     "mdb-react-ui-kit": "^9.0.0",
     "react": "^18.3.1",

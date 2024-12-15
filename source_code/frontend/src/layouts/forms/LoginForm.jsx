@@ -8,11 +8,13 @@ import { loginUser } from "../../services/api";
 import { userLoginSchema } from "../../validations/user";
 import ApiError from "../../errors/ApiError";
 import { useMyContext } from "../../context/ContextProvider";
+import { handleServiceError } from "../../utils/handleServiceError";
 
 const LoginForm = () => {
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
     } = useForm({ resolver: yupResolver(userLoginSchema) });
     const { setUser, setToken, isAuthenticated, setIsAuthenticated } = useMyContext()
@@ -20,22 +22,15 @@ const LoginForm = () => {
 
     const onSubmit = async (data) => {
         try {
-            const { usernameOrEmail, password } = data;
-            const res = await loginUser({ usernameOrEmail, password });
+            const res = await loginUser(data);
             const { user, token } = res.data.data;
+            toast.success("Login successful");
             setIsAuthenticated(true);
             setUser(user);
             setToken(token);
-            setTimeout(() => { navigate("/") }, 200)
-            toast.success("Login successful!");
-        } catch (err) {
-            if (err instanceof ApiError) toast.error(<>
-                <span className="capitalize">{err.message}</span>
-                <br />
-                <span>{err.details}</span>
-            </>)
-            else toast.error("Login failed. unexpected error. Please see the console for more details.");
-
+            navigate("/")
+        } catch (error) {
+            handleServiceError({ error, operation: "Login" });
         }
     };
 
@@ -88,15 +83,15 @@ const LoginForm = () => {
                             />
                         </div>
 
-                        <div className="col-span-6 sm:flex sm:items-center sm:gap-4 text-white">
+                        <div className="col-span-6 flex flex-col gap-4 sm:flex-row sm:items-center text-white">
                             <button
                                 type="submit"
-                                className="hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 transition inline-block shrink-0 rounded-md border-2 border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium"
+                                className="hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-600 transition inline-block shrink-0 rounded-md border-2 border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium"
                             >
                                 Log in
                             </button>
 
-                            <p className="mt-4 text-sm text-gray-500 sm:mt-0">
+                            <p className="text-sm text-gray-500 m-0">
                                 <span>Don't have an account?</span>{" "}
                                 <Link to="/register" className="text-gray-700 underline">
                                     Register
@@ -104,10 +99,33 @@ const LoginForm = () => {
                                 .
                             </p>
                         </div>
+                        <div className="col-span-6 flex gap-4 flex-col sm:flex-row sm:items-center">
+                            <button
+                                onClick={() => {
+                                    setValue("password", "12345678");
+                                    setValue("usernameOrEmail", "guest")
+                                    handleSubmit(onSubmit)()
+                                }}
+                                className="hover:!bg-blue-600 hover:!text-white focus:outline-none focus:ring active:text-blue-600 transition inline-block shrink-0 rounded-md text-blue-600 border-2 border-blue-600 bg-transparent px-8 py-2 text-sm"
+                            >
+                                Log in as a Guest
+                            </button>
+                            <button
+                                onClick={() => {
+                                    setValue("password", "12345678");
+                                    setValue("usernameOrEmail", "super")
+                                    handleSubmit(onSubmit)()
+                                }}
+                                className="hover:!bg-blue-600 hover:!text-white focus:outline-none focus:ring active:text-blue-600 active:bg-blue-600 transition inline-block shrink-0 rounded-md text-blue-600 border-2 border-blue-600 bg-transparent px-8 py-2 text-sm"
+                            >
+                                Log in as Admin
+                            </button>
+
+                        </div>
                     </form>
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 };
 

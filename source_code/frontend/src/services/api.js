@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { apiUrls } from '../config';
 import ApiError from '../errors/ApiError';
+import { handleAxiosError } from '../utils/handleAxiosError';
 
 
 export const registerUser = async (data) => {
@@ -8,12 +9,7 @@ export const registerUser = async (data) => {
     const response = await axios.post(apiUrls.register, data);
     return response;
   } catch (error) {
-    console.error("API RegisterUser Service error", error);
-    if (error.response.data.error) {
-      throw new ApiError({ message: error.response.data.error.message, details: error.response.data.error.details })
-    } else {
-      throw error;
-    }
+    handleAxiosError(error)
   }
 };
 
@@ -22,12 +18,7 @@ export const loginUser = async ({ usernameOrEmail, password }) => {
     const response = await axios.post(apiUrls.login, { usernameOrEmail, password });
     return response;
   } catch (error) {
-    console.error("API LoginUser Service error", error);
-    if (error.response.data.error) {
-      throw new ApiError({ message: error.response.data.error.message, details: error.response.data.error.details })
-    } else {
-      throw error;
-    }
+    handleAxiosError(error)
   }
 };
 
@@ -35,7 +26,6 @@ export const uploadFile = async (file, tags, token) => {
   const formData = new FormData();
   formData.append('file', file);
   formData.append('tags', tags);
-
   try {
     const response = await axios.post(apiUrls.upload, formData, {
       headers: {
@@ -45,8 +35,7 @@ export const uploadFile = async (file, tags, token) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error uploading file", error);
-    throw error;
+    handleAxiosError(error)
   }
 };
 
@@ -59,8 +48,7 @@ export const getFiles = async (token) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error fetching files", error);
-    throw error;
+    handleAxiosError(error)
   }
 };
 

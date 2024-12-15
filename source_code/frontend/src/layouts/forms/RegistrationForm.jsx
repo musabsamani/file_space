@@ -1,33 +1,29 @@
 import React from 'react'
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { yupResolver } from "@hookform/resolvers/yup";
-import ApiError from '../../errors/ApiError';
 import Input from '../../components/_include/forms/_input'
 import CheckBox from '../../components/_include/forms/_checkbox'
 import { userRegistrationSchema } from '../../validations/user';
 import { registerUser } from '../../services/api';
 import { useMyContext } from '../../context/ContextProvider'
+import { handleServiceError } from '../../utils/handleServiceError';
 
 const RegistrationForm = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(userRegistrationSchema) })
     const { setUser, setToken } = useMyContext()
+    const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(userRegistrationSchema) })
+
     const onSubmit = async (data) => {
         try {
-            const { fullname, username, password, email } = data
-            const res = await registerUser({ fullname, username, password, email });
+            const res = await registerUser(data);
             const user = res.data.data;
-            setUser(user);
             toast.success("User registered successfully");
-        } catch (err) {
-            if (err instanceof ApiError) toast.error(<>
-                <span className="capitalize">{err.message}</span>
-                <br />
-                <span>{err.details}</span>
-            </>)
-            else toast.error("Registration failed");
-
+            setUser(user);
+            navigate("/login")
+        } catch (error) {
+            handleServiceError({ error, operation: "Registration" });
         }
     }
 
@@ -52,7 +48,7 @@ const RegistrationForm = () => {
 
                     <p className="mt-4 leading-relaxed text-gray-500">
                         Securely upload, organize, and share your image and video files with ease.
-                        Track views and manage your content with a simple drag-and-drop interface.
+                        Track views and manage your content with a simple and an intuitive user interface.
                     </p>
 
 
@@ -121,19 +117,19 @@ const RegistrationForm = () => {
                                 </p>
                             </CheckBox>
                         </div>
-                        <div className="col-span-6 sm:flex sm:items-center sm:gap-4 text-white">
-                            <button
-
+                        <div className="col-span-6 flex flex-col gap-4 sm:flex-row sm:items-center text-white">
+                            <button type="submit"
                                 className="hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 transition inline-block shrink-0 rounded-md border-2 border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium">
                                 Create an account
                             </button>
 
-                            <p className="mt-4 text-sm text-gray-500 sm:mt-0">
+                            <p className="text-sm text-gray-500 m-0">
                                 <span>Already have an account?</span>
                                 {" "}
                                 <Link to="/login" className="text-gray-700 underline">Log in</Link>.
                             </p>
                         </div>
+
                     </form>
                 </div>
             </main>

@@ -1,4 +1,4 @@
-import { INPUT_TYPES_TEXT_LIKE } from "../../../config";
+import { TEXT_INPUT_TYPES } from "../../../config";
 
 // Styles for various input fields
 const FIELD_STYLES = {
@@ -25,7 +25,7 @@ const InputField = ({
 }) => {
     const appliedStyles = FIELD_STYLES[styleKey] || FIELD_STYLES.DEFAULT;
 
-    if (INPUT_TYPES_TEXT_LIKE.includes(type)) {
+    if (TEXT_INPUT_TYPES.includes(type)) {
         return (
             <div>
                 {label && <label htmlFor="FirstName" className="block text-sm font-medium text-gray-700">

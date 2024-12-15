@@ -8,7 +8,7 @@ This project is a Node.js-based application that allows users to securely upload
 - **File Upload**: Upload images or video files with a tagging system.
 - **File Sharing**: Generate shareable links for public access to files.
 - **Statistics**: Track and display the number of views for each file.
-- **Error Handling**: Custom error handling and logging with Winston.
+- **Error Handling**: Custom error handling and logging with logger.
 
 ## Tech Stack
 

@@ -1,0 +1,6649 @@
+{
+	"info": {
+		"_postman_id": "55e5723d-c3a7-484f-ba58-ac479af41f32",
+		"name": "FileSpace (Authorization here)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25174799",
+		"_collection_link": "https://bold-crescent-99721.postman.co/workspace/file_space~8b6f25fb-9c28-4664-9dcb-58b0925d22ed/collection/25174799-55e5723d-c3a7-484f-ba58-ac479af41f32?action=share&source=collection_link&creator=25174799"
+	},
+	"item": [
+		{
+			"name": "general",
+			"item": [
+				{
+					"name": "middlewares",
+					"item": [
+						{
+							"name": "checkUserRole middleware",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Error 403: unauthorized user does not have sufficient privileges to access this resource",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/{{users}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"{{users}}"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "113"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"71-dT9R0dFLgRS5rMcBZV9ITjMbKDo\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Dec 2024 06:21:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized\",\n        \"details\": \"user does not have sufficient privileges to access this resource\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "jwt authentication middleware",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU0MjFiYjhODRlZGExMzk1MDY4NmYiLCJmdWxsbmFtZSI6Im11c2FiIHNhbWFuaSIsInVzZXJuYW1lIjoibXVzYWIiLCJlbWFpbCI6Im11c2FiQHNhbWFuaS5jb20iLCJ1c2VyUm9sZSI6InVzZXIiLCJpYXQiOjE3MzM2MDg4NDEsImV4cCI6MTczNzQ5Njg0MX0.crvM3z4E6Ga7QtY8wYkFDTXteZz8uLTdbJGDNuUXa4M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Error 401: missing authentication header",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/{{users}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"{{users}}"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "109"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"6d-xnJaONVpu45L4s+nXC++0jvNeU8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Dec 2024 06:06:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication header is missing\"\n    }\n}"
+								},
+								{
+									"name": "Error 401: missing authentication token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/{{users}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"{{users}}"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "108"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"6c-qpaePk3PsswTBe1HSRFeaeo5V3Y\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Dec 2024 06:07:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication token is missing\"\n    }\n}"
+								},
+								{
+									"name": "Error 401: invalid token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU0MjFiYjhODRlZGExMzk1MDY4NmYiLCJmdWxsbmFtZSI6Im11c2FiIHNhbWFuaSIsInVzZXJuYW1lIjoibXVzYWIiLCJlbWFpbCI6Im11c2FiQHNhbWFuaS5jb20iLCJ1c2VyUm9sZSI6InVzZXIiLCJpYXQiOjE3MzM2MDg4NDEsImV4cCI6MTczNzQ5Njg0MX0.crvM3z4E6Ga7QtY8wYkFDTXteZz8uLTdbJGDNuUXa4M",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/{{users}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"{{users}}"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "90"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5a-9dH4MffIflk24PRrW6PgibqD+0o\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Dec 2024 06:12:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Invalid token\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "undefined route",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/undefiend/route",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"undefiend",
+										"route"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete user by id Copy",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/{{users}}/undefiend/route",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"{{users}}",
+												"undefiend",
+												"route"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "130"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"82-i+sCLwdNlEWcwvUR3OPmjFeae1Q\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Dec 2024 07:34:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"message\": \"API endpoint not found\",\n        \"details\": \"Path 'DELETE: /api/v1/users/undefiend/route' not found on server routes\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "healthCheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}",
+							"host": [
+								"{{host}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get country by ip address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://ipapi.co/{{test_ip}}/json/",
+							"protocol": "https",
+							"host": [
+								"ipapi",
+								"co"
+							],
+							"path": [
+								"{{test_ip}}",
+								"json",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get the country and province of the client by ip address",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://ipapi.co/5.107.93.76/json/",
+									"protocol": "https",
+									"host": [
+										"ipapi",
+										"co"
+									],
+									"path": [
+										"5.107.93.76",
+										"json",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:23:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Vary",
+									"value": "Host, origin"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=Hd56lNV6zDY1PGsTqykl%2F6TlfBTWBNw6VDcx8g6bW9JeEbBkOMMGVbODm60y%2FlKbXlBzIAb9%2B1z%2B6WU3i1PlfY0O0gOjVRk7ApyESlj88%2BFYntpgSPQwS2Mn\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "8ef08036ce1784cc-HKG"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=115938&min_rtt=113570&rtt_var=33678&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2977&recv_bytes=925&delivery_rate=25570&cwnd=33&unsent_bytes=0&cid=15f90bb05b7f56ff&ts=452&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ip\": \"5.107.93.76\",\n    \"network\": \"5.107.64.0/19\",\n    \"version\": \"IPv4\",\n    \"city\": \"Sharjah\",\n    \"region\": \"Sharjah\",\n    \"region_code\": \"SH\",\n    \"country\": \"AE\",\n    \"country_name\": \"United Arab Emirates\",\n    \"country_code\": \"AE\",\n    \"country_code_iso3\": \"ARE\",\n    \"country_capital\": \"Abu Dhabi\",\n    \"country_tld\": \".ae\",\n    \"continent_code\": \"AS\",\n    \"in_eu\": false,\n    \"postal\": null,\n    \"latitude\": 25.3412,\n    \"longitude\": 55.4224,\n    \"timezone\": \"Asia/Dubai\",\n    \"utc_offset\": \"+0400\",\n    \"country_calling_code\": \"+971\",\n    \"currency\": \"AED\",\n    \"currency_name\": \"Dirham\",\n    \"languages\": \"ar-AE,fa,en,hi,ur\",\n    \"country_area\": 82880,\n    \"country_population\": 9630959,\n    \"asn\": \"AS5384\",\n    \"org\": \"Emirates Telecommunications Group Company (etisalat Group) Pjsc\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usernameOrEmail\":\"super\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{auth}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{auth}}",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"username\":\"mcuss\",\r\n    \"usernameOrEmail\":\"musab\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU0MjFiYjhhODRlZGExMzk1MDY4NmYiLCJmdWxsbmFtZSI6Im11c2FiIHNhbWFuaSIsInVzZXJuYW1lIjoibXVzYWIiLCJlbWFpbCI6Im11c2FiQHNhbWFuaS5jb20iLCJ1c2VyUm9sZSI6InVzZXIiLCJpYXQiOjE3MzM2MTM4NzUsImV4cCI6MTczNzUwMTg3NX0.n2APRy5TMkCAWgnMnOQkjvBc83U78OShBLvvt8lwIVg"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "228"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e4-TAmPYpMt9eH0iHBg3IEMicN6DOQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:24:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"user\": {\n            \"_id\": \"675421bb8a84eda13950686f\",\n            \"fullname\": \"musab samani\",\n            \"username\": \"musab\",\n            \"userRole\": \"user\",\n            \"email\": \"musab@samani.com\",\n            \"createdAt\": \"2024-12-07T10:21:47.791Z\",\n            \"updatedAt\": \"2024-12-07T10:21:47.791Z\",\n            \"__v\": 0\n        }\n    }\n}"
+						},
+						{
+							"name": "Error 400: required field 'password' shouldn't be empty",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"username\":\"mcuss\",\r\n    \"usernameOrEmail\":\"musab\",\r\n    \"password\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-e7LIkwVrDov8bDo7UFwt8Elbhg8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:25:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"password\\\" is not allowed to be empty\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: field 'password' should be string",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"username\":\"mcuss\",\r\n    \"usernameOrEmail\":\"musab\",\r\n    \"password\":true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-B9V+wn+2h1iGha55N67pdMxqioU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:25:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"password\\\" must be a string\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: field 'usernameOrEmail' is required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"username\":\"mcuss\",\r\n    \"password\":true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-c0xRP3X+AznZN2IIY3Fs51g+fNE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:26:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"username or email\\\" is required\"\n    }\n}"
+						},
+						{
+							"name": "Error 401: Invalid credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usernameOrEmail\":\"s\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"49-59C1MDvSruTrjZWNrUjJSOoTBqA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:43:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"user login failed\",\n        \"details\": \"Invalid credentials\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\":\"guest 1\",\r\n    \"username\":\"guest1\",\r\n    \"email\":\"gues@user.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{auth}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{auth}}",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful registration",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"guest 1\",\r\n    \"username\":\"guest1\",\r\n    \"email\":\"gues@user.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "212"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d4-D9uOscjsVhj4Avb5E1CokiYB76w\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:28:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"fullname\": \"guest 1\",\n        \"username\": \"guest1\",\n        \"userRole\": \"user\",\n        \"email\": \"gues@user.com\",\n        \"_id\": \"6754da27ad5e2b83b7854ae3\",\n        \"createdAt\": \"2024-12-07T23:28:39.239Z\",\n        \"updatedAt\": \"2024-12-07T23:28:39.239Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 400: Email already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"musab samani\",\r\n    \"username\":\"musabsamani\",\r\n    \"email\":\"musab@samani.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-a67i7ZofJ5cAXtEAtMuEC8kI9hA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:00:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to create user\",\n        \"details\": \"Email already exists\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: Username already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"musab samani\",\r\n    \"username\":\"musab\",\r\n    \"email\":\"musab@samani.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-QYMMWA+zrcrR8Ex7+01FxFM187U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:05:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to create user\",\n        \"details\": \"Username already exists\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: Required field 'password' is missing",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"musab samani\",\r\n    \"username\":\"musab\",\r\n    \"email\":\"musab@samani.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-y/+9cDf3cXqgQlBAIob0qvhIfPA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:06:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"password\\\" is required\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: Invalid type for field 'username'",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"musab samani\",\r\n    \"username\":true,\r\n    \"email\":\"musab@samani.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-F0pm3iJI9kQlMp8mo1QjjBPqMf8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:07:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"username\\\" must be a string\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: Username must not contain '@'",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"musab samani\",\r\n    \"username\":\"mu@sab\",\r\n    \"email\":\"musab@samani.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{auth}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{auth}}",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "97"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"61-gQd3lqN8EitlQuEImkX8dngwx4c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Dec 2024 23:10:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"Username must not contain the '@' symbol\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{users}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{users}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully  get all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"username\":\"mcuss\",\r\n    \"usernameOrEmail\":\"musabsamani\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1064"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"428-TOnyX749//B4B27t4vna5fDCOpg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 06:47:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"6754219f8a84eda13950686b\",\n            \"fullname\": \"super admin\",\n            \"username\": \"super\",\n            \"userRole\": \"admin\",\n            \"email\": \"super@admin.com\",\n            \"createdAt\": \"2024-12-07T10:21:19.920Z\",\n            \"updatedAt\": \"2024-12-07T10:21:19.920Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"675421bb8a84eda13950686f\",\n            \"fullname\": \"musab samani\",\n            \"username\": \"musab\",\n            \"userRole\": \"user\",\n            \"email\": \"musab@samani.com\",\n            \"createdAt\": \"2024-12-07T10:21:47.791Z\",\n            \"updatedAt\": \"2024-12-07T10:21:47.791Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"675421d98a84eda139506873\",\n            \"fullname\": \"guest user\",\n            \"username\": \"guest\",\n            \"userRole\": \"user\",\n            \"email\": \"guest@user.com\",\n            \"createdAt\": \"2024-12-07T10:22:17.684Z\",\n            \"updatedAt\": \"2024-12-07T10:22:17.684Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"675423180680b6332b92f049\",\n            \"fullname\": \"Emerson Orr\",\n            \"username\": \"gacetunuk\",\n            \"userRole\": \"user\",\n            \"email\": \"cizysetez@mailinator.com\",\n            \"createdAt\": \"2024-12-07T10:27:36.022Z\",\n            \"updatedAt\": \"2024-12-07T10:27:36.022Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6754da27ad5e2b83b7854ae3\",\n            \"fullname\": \"guest 1\",\n            \"username\": \"guest1\",\n            \"userRole\": \"user\",\n            \"email\": \"gues@user.com\",\n            \"createdAt\": \"2024-12-07T23:28:39.239Z\",\n            \"updatedAt\": \"2024-12-07T23:28:39.239Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error 401: Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"username\":\"mcuss\",\r\n    \"usernameOrEmail\":\"musabsamani\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-xnJaONVpu45L4s+nXC++0jvNeU8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:03:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication header is missing\"\n    }\n}"
+						},
+						{
+							"name": "Error 403: Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"username\":\"mcuss\",\r\n    \"usernameOrEmail\":\"musabsamani\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-dT9R0dFLgRS5rMcBZV9ITjMbKDo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 06:47:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized\",\n        \"details\": \"user does not have sufficient privileges to access this resource\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get user By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{users}}/67542318068b6332b92f049",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{users}}",
+								"67542318068b6332b92f049"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully get user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/675423180680b6332b92f049",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"675423180680b6332b92f049"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "230"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e6-YTKH96VUPsAYe6FDOTLIFcuG4oc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:29:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"675423180680b6332b92f049\",\n        \"fullname\": \"Emerson Orr\",\n        \"username\": \"gacetunuk\",\n        \"userRole\": \"user\",\n        \"email\": \"cizysetez@mailinator.com\",\n        \"createdAt\": \"2024-12-07T10:27:36.022Z\",\n        \"updatedAt\": \"2024-12-07T10:27:36.022Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/67542318068b6332b92f049",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"67542318068b6332b92f049"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-yBAuGSsc1oEMd1mtrOSFPH++RUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:35:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Error while validating id in the request parameters\",\n        \"details\": \"invalid id in the request parameters\"\n    }\n}"
+						},
+						{
+							"name": "Error 401: Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/674fefacb4f0dbf72324c9af",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"674fefacb4f0dbf72324c9af"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-xnJaONVpu45L4s+nXC++0jvNeU8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:27:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication header is missing\"\n    }\n}"
+						},
+						{
+							"name": "Error 403: Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/674fefacb4f0dbf72324c9af",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"674fefacb4f0dbf72324c9af"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-dT9R0dFLgRS5rMcBZV9ITjMbKDo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:27:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized\",\n        \"details\": \"user does not have sufficient privileges to access this resource\"\n    }\n}"
+						},
+						{
+							"name": "Error 404: user not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/674fefacb4f0dbf72324c9af",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"674fefacb4f0dbf72324c9af"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-uuiXgG13G412su6SNstCNRk278Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:28:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to retrieve user\",\n        \"details\": \"User not found\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "check is valid user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"another-filed\":\"dd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{users}}/is-valid-user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{users}}",
+								"is-valid-user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully return array of valid users only",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usernameOrEmailList\":[\"super@admin.com\",\"guest\", \"invalid-username\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/is-valid-user",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"is-valid-user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "169"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a9-eIhgQ3nUw+ChJhUnXi2szOyhL+8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:47:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"6754219f8a84eda13950686b\",\n            \"username\": \"super\",\n            \"email\": \"super@admin.com\"\n        },\n        {\n            \"_id\": \"675421d98a84eda139506873\",\n            \"username\": \"guest\",\n            \"email\": \"guest@user.com\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error 400: empty request body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/is-valid-user",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"is-valid-user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-7MiOVsAFx4toY2oiOG/RN2qVUJE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:59:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"request body is empty\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: Empty Body no users to check",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"another-filed\":\"dd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/is-valid-user",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"is-valid-user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6f-PvsLXo53Uj3tggm/IrL08VDCBsc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 08:02:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to validate username or email\",\n        \"details\": \"Empty Body, there is no users to check\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: empty list",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usernameOrEmailList\":[]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/is-valid-user",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"is-valid-user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "120"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"78-CGbud432Fa1XPmkHBldUDqfTGGw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:59:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"username Or Email list\\\" does not contain [username or email]\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid list item",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usernameOrEmailList\":[\"super@admin.com\",0, \"invalid-username\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/is-valid-user",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"is-valid-user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-QNp0iiGK9PBhN5g10A4o2XgClUU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:58:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"username or email\\\" must be one of [string]\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\":\"guest2 user\",\r\n    \"username\":\"guest2\",\r\n    \"password\":\"12345678\",\r\n    \"email\":\"guest2@user.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{users}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{users}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully created user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"guest2 user\",\r\n    \"username\":\"guest2\",\r\n    \"password\":\"12345678\",\r\n    \"email\":\"guest2@user.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"da-3i2FDMbElC2wMHh8y4kOaZAcva8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:41:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"fullname\": \"guest2 user\",\n        \"username\": \"guest2\",\n        \"userRole\": \"user\",\n        \"email\": \"guest2@user.com\",\n        \"_id\": \"67554d9caeb506ef538a553d\",\n        \"createdAt\": \"2024-12-08T07:41:16.449Z\",\n        \"updatedAt\": \"2024-12-08T07:41:16.449Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 400: username already exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"guest user\",\r\n    \"username\":\"guest\",\r\n    \"password\":\"12345678\",\r\n    \"email\":\"guest@user.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-QYMMWA+zrcrR8Ex7+01FxFM187U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:40:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to create user\",\n        \"details\": \"Username already exists\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: field 'email' is required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"guest2 user\",\r\n    \"username\":\"guest2\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-ThV5C25X0krDWkrcDOzrqmyuNOY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:42:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"email\\\" is required\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: field 'password' must be string",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"guest2 user\",\r\n    \"username\":\"guest2\",\r\n    \"password\":0,\r\n    \"email\":\"guest2@user.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-B9V+wn+2h1iGha55N67pdMxqioU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:44:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"password\\\" must be a string\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: email already exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"guest user\",\r\n    \"username\":\"guesdt\",\r\n    \"password\":\"12345678\",\r\n    \"email\":\"guest@user.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-a67i7ZofJ5cAXtEAtMuEC8kI9hA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:40:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to create user\",\n        \"details\": \"Email already exists\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: field 'username' is not allowed to be empty",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"guest2 user\",\r\n    \"username\":\"\",\r\n    \"password\":\"12345678\",\r\n    \"email\":\"guest2@user.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-ncOvoXpOlaam8sQWa36j09/bhj8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:45:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"username\\\" is not allowed to be empty\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\":\"6754da27ad5e2b83b7854ae3\",\r\n    \"fullname\":\"guest1\",            \r\n    \"email\":\"guest1@user.com\",            \r\n        \"updatedAt\": \"2024-12-08T09:18:11.483Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{users}}/6754da27ad5e2b83b7854ae3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{users}}",
+								"6754da27ad5e2b83b7854ae3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"6754da27ad5e2b83b7854ae3\",\r\n    \"fullname\":\"guest1\",            \r\n    \"username\":\"guest1\",            \r\n    \"updatedAt\": \"2024-12-08T09:16:44.452Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/6754da27ad5e2b83b7854ae3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"6754da27ad5e2b83b7854ae3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "211"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d3-q7gqi4e9vX3JWbQnyBeloBYb1iY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 09:18:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"6754da27ad5e2b83b7854ae3\",\n        \"fullname\": \"guest1\",\n        \"username\": \"guest1\",\n        \"userRole\": \"user\",\n        \"email\": \"gues@user.com\",\n        \"createdAt\": \"2024-12-07T23:28:39.239Z\",\n        \"updatedAt\": \"2024-12-08T09:18:11.483Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Success: username is the same as old one do not not cause error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"6754da27ad5e2b83b7854ae3\",\r\n    \"fullname\":\"guest1\",            \r\n    \"username\":\"guest1\",            \r\n    \"updatedAt\": \"2024-12-08T09:05:36.678Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/6754da27ad5e2b83b7854ae3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"6754da27ad5e2b83b7854ae3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "211"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d3-GvFzWoAMGPX4oOemFgyqFcx1t6E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 09:05:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"6754da27ad5e2b83b7854ae3\",\n        \"fullname\": \"guest1\",\n        \"username\": \"guest1\",\n        \"userRole\": \"user\",\n        \"email\": \"gues@user.com\",\n        \"createdAt\": \"2024-12-07T23:28:39.239Z\",\n        \"updatedAt\": \"2024-12-08T09:05:56.286Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid id in the request params",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"674fefacb4f0dbf72324c9af\",\r\n    \"fullname\":\"super add\",            \r\n    \"updatedAt\": \"2020-12-14T05:59:08.057Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/674fefacb4f0dbf7234c9af",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"674fefacb4f0dbf7234c9af"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-yBAuGSsc1oEMd1mtrOSFPH++RUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 08:21:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Error while validating id in the request parameters\",\n        \"details\": \"invalid id in the request parameters\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: ID in request parameters and request body do not match",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"674fefacb4f0dbf72324c9af\",\r\n    \"fullname\":\"super add\",            \r\n    \"updatedAt\": \"2020-12-14T05:59:08.057Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/674fefacb4f0dbf7234fc9af",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"674fefacb4f0dbf7234fc9af"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f-ODAK9Nyfu4U5mDER/3nUI36BL/A\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 08:22:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Error while validating request parameters and request body ids match\",\n        \"details\": \"ID in request parameters and request body do not match\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: Invalid User ID: User not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"674fefacb4f0dbf7234fc9af\",\r\n    \"fullname\":\"super add\",            \r\n    \"updatedAt\": \"2020-12-14T05:59:08.057Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/674fefacb4f0dbf7234fc9af",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"674fefacb4f0dbf7234fc9af"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-UyQayI/32w4tXpdGfxa03bnC6vs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 08:22:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to update user\",\n        \"details\": \"Invalid User ID: User not found\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: can't update email it already used",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"6754da27ad5e2b83b7854ae3\",\r\n    \"fullname\":\"guest1\",            \r\n    \"email\":\"super@admin.com\",            \r\n        \"updatedAt\": \"2024-12-08T09:18:11.483Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/6754da27ad5e2b83b7854ae3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"6754da27ad5e2b83b7854ae3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-mHlGjUea9WCO5B156SKrJWyBQ+U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 09:20:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to update user\",\n        \"details\": \"Email already exists\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: can't update username it already used",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"6754da27ad5e2b83b7854ae3\",\r\n    \"fullname\":\"guest1\",            \r\n    \"username\":\"super\",            \r\n        \"updatedAt\": \"2024-12-08T09:18:11.483Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/6754da27ad5e2b83b7854ae3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"6754da27ad5e2b83b7854ae3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-xewfX/2ajh1kKxi6AShODpnQU9c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 09:18:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to update user\",\n        \"details\": \"Username already exists\"\n    }\n}"
+						},
+						{
+							"name": "Error 409: version conflict should get the updated one",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"6754da27ad5e2b83b7854ae3\",\r\n    \"fullname\":\"guest1\",            \r\n    \"updatedAt\": \"2024-12-07T23:18:39.239Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/6754da27ad5e2b83b7854ae3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"6754da27ad5e2b83b7854ae3"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b-PiWU9MjtO8OpXBvu6AgwxHlPfYc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 08:24:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to update user\",\n        \"details\": \"User has been modified, get the updated one first\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete user by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{users}}/undefiend/route",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{users}}",
+								"undefiend",
+								"route"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success: delete a user by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/675423180680b6332b92f049",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"675423180680b6332b92f049"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "230"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e6-YTKH96VUPsAYe6FDOTLIFcuG4oc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:30:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"675423180680b6332b92f049\",\n        \"fullname\": \"Emerson Orr\",\n        \"username\": \"gacetunuk\",\n        \"userRole\": \"user\",\n        \"email\": \"cizysetez@mailinator.com\",\n        \"createdAt\": \"2024-12-07T10:27:36.022Z\",\n        \"updatedAt\": \"2024-12-07T10:27:36.022Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/67542180680b6332b92f049",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"67542180680b6332b92f049"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-yBAuGSsc1oEMd1mtrOSFPH++RUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:31:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Error while validating id in the request parameters\",\n        \"details\": \"invalid id in the request parameters\"\n    }\n}"
+						},
+						{
+							"name": "Error 404: user not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{users}}/675423180680b6332b92f049",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{users}}",
+										"675423180680b6332b92f049"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-EJE+MacI7G8V2HeCkMyEwW1COxo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 07:32:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Failed to delete user\",\n        \"details\": \"User not found\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "files",
+			"item": [
+				{
+					"name": "get logged in user all files",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{files}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{files}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully get all user's files",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "988"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3dc-5cFQvRHUzMJUkWHry0lBUgEhPiM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 00:52:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"67561556bfe1633129caf9a7\",\n            \"originalName\": \"2024-11-28 (1).png\",\n            \"filename\": \"9ad7a74b-2e8f-4541-98e4-cd41fc78e48e\",\n            \"path\": \"C:\\\\Users\\\\DEV101\\\\Documents\\\\file_space\\\\source_code\\\\backend\\\\uploads\\\\9ad7a74b-2e8f-4541-98e4-cd41fc78e48e\",\n            \"size\": 80675,\n            \"mimetype\": \"image/png\",\n            \"encoding\": \"7bit\",\n            \"owner\": \"6754219f8a84eda13950686b\",\n            \"privacy\": \"private\",\n            \"invitedUsers\": [],\n            \"blockedUsers\": [],\n            \"tags\": [],\n            \"createdAt\": \"2024-12-08T21:53:26.984Z\",\n            \"updatedAt\": \"2024-12-08T21:53:26.984Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"67561af035c6bb4c4b8aa24a\",\n            \"originalName\": \"2024-11-28 (1).png\",\n            \"filename\": \"a00f10a1-0bef-454d-a07a-a6a88b7422bd\",\n            \"path\": \"C:\\\\Users\\\\DEV101\\\\Documents\\\\file_space\\\\source_code\\\\backend\\\\uploads\\\\a00f10a1-0bef-454d-a07a-a6a88b7422bd\",\n            \"size\": 80675,\n            \"mimetype\": \"image/png\",\n            \"encoding\": \"7bit\",\n            \"owner\": \"6754219f8a84eda13950686b\",\n            \"privacy\": \"private\",\n            \"invitedUsers\": [],\n            \"blockedUsers\": [],\n            \"tags\": [\n                \"{\\\"tags\\\":[0]}\"\n            ],\n            \"createdAt\": \"2024-12-08T22:17:20.894Z\",\n            \"updatedAt\": \"2024-12-08T22:17:20.894Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error 401: unauthorized missig auth header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-xnJaONVpu45L4s+nXC++0jvNeU8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:27:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication header is missing\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get file by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{files}}/67561af035c6bb4c4b8aa24a",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{files}}",
+								"67561af035c6bb4c4b8aa24a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success: get - private file - by owner",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "489"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e9-PSCCkzHSRTJuSzAQsvXfpNN2ICU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 00:53:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"67561556bfe1633129caf9a7\",\n        \"originalName\": \"2024-11-28 (1).png\",\n        \"filename\": \"9ad7a74b-2e8f-4541-98e4-cd41fc78e48e\",\n        \"path\": \"C:\\\\Users\\\\DEV101\\\\Documents\\\\file_space\\\\source_code\\\\backend\\\\uploads\\\\9ad7a74b-2e8f-4541-98e4-cd41fc78e48e\",\n        \"size\": 80675,\n        \"mimetype\": \"image/png\",\n        \"encoding\": \"7bit\",\n        \"owner\": \"6754219f8a84eda13950686b\",\n        \"privacy\": \"private\",\n        \"invitedUsers\": [],\n        \"blockedUsers\": [],\n        \"tags\": [],\n        \"createdAt\": \"2024-12-08T21:53:26.984Z\",\n        \"updatedAt\": \"2024-12-08T21:53:26.984Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 401: unauthorized missing auth header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "136"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"88-g0dCDQdnEwSzCztQAD28rle0e9k\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 00:56:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: user doesn't have sufficient permissions to access this file\",\n        \"details\": \"user is not authenticated\"\n    }\n}"
+						},
+						{
+							"name": "Error 401: unauthorized missing auth header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "136"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"88-g0dCDQdnEwSzCztQAD28rle0e9k\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:09:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: user doesn't have sufficient permissions to access this file\",\n        \"details\": \"user is not authenticated\"\n    }\n}"
+						},
+						{
+							"name": "Error 403 - unauthorized  - private file - user in not in the initedUser list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "160"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a0-fuyzp6iNievEGfV/4xRSJGJnUC4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 00:57:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: user doesn't have sufficient permissions to access this file\",\n        \"details\": \"user is not in the invitedUsers list of this file\"\n    }\n}"
+						},
+						{
+							"name": "Error 404: File not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561556bfe1633129caf9a3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561556bfe1633129caf9a3"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-ZYOKDilbjp82dmt8fzI602UV6hM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 01:00:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"file not found\",\n        \"details\": \"File with the id '67561556bfe1633129caf9a3' not found\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tags\":[\"\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{files}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{files}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully upload file",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"type": "file",
+											"src": "/C:/Users/DEV101/OneDrive/Pictures/Screenshots/2024-11-28 (1).png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "531"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"213-KEN30Lcn0HhHCt5WGWM4rJTuwuE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 21:53:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Files uploaded successfully\",\n    \"data\": [\n        {\n            \"originalName\": \"2024-11-28 (1).png\",\n            \"filename\": \"9ad7a74b-2e8f-4541-98e4-cd41fc78e48e\",\n            \"path\": \"C:\\\\Users\\\\DEV101\\\\Documents\\\\file_space\\\\source_code\\\\backend\\\\uploads\\\\9ad7a74b-2e8f-4541-98e4-cd41fc78e48e\",\n            \"size\": 80675,\n            \"mimetype\": \"image/png\",\n            \"encoding\": \"7bit\",\n            \"owner\": \"6754219f8a84eda13950686b\",\n            \"privacy\": \"private\",\n            \"invitedUsers\": [],\n            \"blockedUsers\": [],\n            \"tags\": [],\n            \"_id\": \"67561556bfe1633129caf9a7\",\n            \"createdAt\": \"2024-12-08T21:53:26.984Z\",\n            \"updatedAt\": \"2024-12-08T21:53:26.984Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error 400: No file upladed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-3ATKGYduAQTlIV2TAUZu8ut7PEk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 21:59:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"uploading files failed\",\n        \"details\": \"No file uploaded\"\n    }\n}"
+						},
+						{
+							"name": "Error400: invalid file type",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"type": "file",
+											"src": "/C:/Users/DEV101/OneDrive/Pictures/Screenshots/2024-11-02.rpng"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "103"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"67-e1pXTX/TNV9qjJP16TO/R/v4/lE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 21:49:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"File type not allowed\",\n    \"details\": \"file with original name '2024-11-02.rpng' upload failed\"\n}"
+						},
+						{
+							"name": "Error 400: field `tags` must be array",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "tags",
+											"value": "[ff]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-IqtG13vn0y4bjZV2dvaai2M2TeA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:13:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"tags\\\" must be an array\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: field `tags` is required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "tag",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-3OT7KJqf/Y+tCk+yCETe8DXRq60\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:14:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"tags\\\" is required\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: tags array elements must be string",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tags\":[3]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-8nHvdNYoDyky0FuqBmKLwsGi4fw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:16:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"tags[0]\\\" must be a string\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: tags array elements must not be empty",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tags\":[\"\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-P/qx5cbVMB/ggNo/2zXe7ICghXI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:17:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"tags[0]\\\" is not allowed to be empty\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete a file by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{files}}/67561a1afe1bc5a4765315ec",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{files}}",
+								"67561a1afe1bc5a4765315ec"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully delete a file",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561a1afe1bc5a4765315ec",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561a1afe1bc5a4765315ec"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "543"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21f-ITDrc/DxYykQcfWig14Rj+d11QQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:49:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"File removed successfully\",\n    \"data\": {\n        \"_id\": \"67561a1afe1bc5a4765315ec\",\n        \"originalName\": \"2024-11-28 (1).png\",\n        \"filename\": \"7c4eb7e6-caaa-4be8-979e-893715403117\",\n        \"path\": \"C:\\\\Users\\\\DEV101\\\\Documents\\\\file_space\\\\source_code\\\\backend\\\\uploads\\\\7c4eb7e6-caaa-4be8-979e-893715403117\",\n        \"size\": 80675,\n        \"mimetype\": \"image/png\",\n        \"encoding\": \"7bit\",\n        \"owner\": \"6754219f8a84eda13950686b\",\n        \"privacy\": \"private\",\n        \"invitedUsers\": [],\n        \"blockedUsers\": [],\n        \"tags\": [\n            \"{\\\"tags\\\":[0]}\"\n        ],\n        \"createdAt\": \"2024-12-08T22:13:46.025Z\",\n        \"updatedAt\": \"2024-12-08T22:13:46.025Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid id in request params",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561a1afe1bc5a4765315e",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561a1afe1bc5a4765315e"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-yBAuGSsc1oEMd1mtrOSFPH++RUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:38:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Error while validating id in the request parameters\",\n        \"details\": \"invalid id in the request parameters\"\n    }\n}"
+						},
+						{
+							"name": "Error 401: unauthorized missing auth header",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561a1afe1bc5a4765315ec",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561a1afe1bc5a4765315ec"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-xnJaONVpu45L4s+nXC++0jvNeU8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:31:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication header is missing\"\n    }\n}"
+						},
+						{
+							"name": "Error 403: forbidden user in not file owner",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561a1afe1bc5a4765315ec",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561a1afe1bc5a4765315ec"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"91-TF/96U8jW7AdIr2UcHAUUCsKKKA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Dec 2024 23:31:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: user doesn't have sufficient permissions to access this file\",\n        \"details\": \"user is not the owner of this file\"\n    }\n}"
+						},
+						{
+							"name": "Error 404: file not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/67561a1aff1bc5a4765315ec",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"67561a1aff1bc5a4765315ec"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-Gvjiip3qjtctWbHOHgR3YegVjJc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 00:21:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: user doesn't have sufficient permissions to access this file\",\n        \"details\": \"File not found\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "set tags",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tags\":[\"tag1\",\"tag2\"],\r\n    \"updatedAt\": \"2024-12-09T04:05:14.691Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{files}}/set-tags/67561af035c6bb4c4b8aa24a",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{files}}",
+								"set-tags",
+								"67561af035c6bb4c4b8aa24a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successfully update file",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tags\":[\"tag1\"],\r\n    \"updatedAt\": \"2024-12-08T22:17:20.894Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-tags/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-tags",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "495"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ef-RzSZvepZ8INcns9rZyS1+8eRfq4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:05:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"67561af035c6bb4c4b8aa24a\",\n        \"originalName\": \"2024-11-28 (1).png\",\n        \"filename\": \"a00f10a1-0bef-454d-a07a-a6a88b7422bd\",\n        \"path\": \"C:\\\\Users\\\\DEV101\\\\Documents\\\\file_space\\\\source_code\\\\backend\\\\uploads\\\\a00f10a1-0bef-454d-a07a-a6a88b7422bd\",\n        \"size\": 80675,\n        \"mimetype\": \"image/png\",\n        \"encoding\": \"7bit\",\n        \"owner\": \"6754219f8a84eda13950686b\",\n        \"privacy\": \"private\",\n        \"invitedUsers\": [],\n        \"blockedUsers\": [],\n        \"tags\": [\n            \"tag1\"\n        ],\n        \"createdAt\": \"2024-12-08T22:17:20.894Z\",\n        \"updatedAt\": \"2024-12-09T04:05:14.691Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid id in the request params",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"675143fe5b96a30e6a780e4e\",\r\n    \"tags\":[\"private\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-tags/675143fe5b96a30e6a780e4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-tags",
+										"675143fe5b96a30e6a780e4"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-yBAuGSsc1oEMd1mtrOSFPH++RUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 01:19:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Error while validating id in the request parameters\",\n        \"details\": \"invalid id in the request parameters\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: empty body",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-tags/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-tags",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-7MiOVsAFx4toY2oiOG/RN2qVUJE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:06:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"request body is empty\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: field 'tags' must be a string",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tags\":[0],\r\n    \"updatedAt\": \"2024-12-08T22:17:20.894Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-tags/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-tags",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-8nHvdNYoDyky0FuqBmKLwsGi4fw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:07:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"tags[0]\\\" must be a string\"\n    }\n}"
+						},
+						{
+							"name": "Error 409: file modified updatedAt new value must match old value",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tags\":[],\r\n    \"updatedAt\": \"2024-12-08T22:17:20.894Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-tags/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-tags",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6a-GZDZcaW+dN5rbxNTFK89WssSZy0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:07:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Couldn't update File\",\n        \"details\": \"File has been modified, get the updated one first\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "set privacy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{musab_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"privacy\":\"private\",\r\n    \"updatedAt\": \"2024-12-09T04:10:36.770Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{files}}/set-privacy/67561af035c6bb4c4b8aa24ba",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{files}}",
+								"set-privacy",
+								"67561af035c6bb4c4b8aa24ba"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error 400: invalid id in the request parameter",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"privacy\":\"private\",\r\n    \"updatedAt\": \"2024-12-09T04:10:36.770Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-privacy/67561af035c6bb4c4b8aa24ba",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-privacy",
+										"67561af035c6bb4c4b8aa24ba"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-yBAuGSsc1oEMd1mtrOSFPH++RUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:26:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Error while validating id in the request parameters\",\n        \"details\": \"invalid id in the request parameters\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: field `privacy` must match one of the predefiend values",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"privacy\":\"privatee\",\r\n    \"updatedAt\": \"2024-12-09T04:10:36.770Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-privacy/675143fe5b96a30e6a780e4e",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-privacy",
+										"675143fe5b96a30e6a780e4e"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "127"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7f-3i/Zqk7keMScw27xwVoIWbAE3gg\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:14:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"Privacy must be one of the following values: public,restricted,private\"\n    }\n}"
+						},
+						{
+							"name": "Error 401: unauthorized missing token",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"privacy\":\"private\",\r\n    \"updatedAt\": \"2024-12-09T04:10:36.770Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-privacy/675143fe5b96a30e6a780e4e",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-privacy",
+										"675143fe5b96a30e6a780e4e"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-qpaePk3PsswTBe1HSRFeaeo5V3Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:16:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication token is missing\"\n    }\n}"
+						},
+						{
+							"name": "Error 404: file to update not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"privacy\":\"private\",\r\n    \"updatedAt\": \"2024-12-09T04:10:36.770Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-privacy/67561af035c6bb4c4b8aa24b",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-privacy",
+										"67561af035c6bb4c4b8aa24b"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-/cobn6gBY8a12zs9Rey4+iaUcjY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:24:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"file not found\",\n        \"details\": \"File with the id '67561af035c6bb4c4b8aa24b' not found\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "set invited users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"updatedAt\": \"2024-12-09T04:51:34.252Z\",        \r\n    \"invitedUsers\":[\"6754219f8a84eda13950686b\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{files}}/set-invited-users/67561af035c6bb4c4b8aa24a",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{files}}",
+								"set-invited-users",
+								"67561af035c6bb4c4b8aa24a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfully invited users to a private file",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"updatedAt\": \"2024-12-09T04:49:25.789Z\",\r\n     // invite user musab to this private file\r\n    \"invitedUsers\":[\"675421bb8a84eda13950686f\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-invited-users/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-invited-users",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "528"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"210-hxXeXk4UmK/BwsIZzaZFiqlhnAc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:51:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"67561af035c6bb4c4b8aa24a\",\n        \"originalName\": \"2024-11-28 (1).png\",\n        \"filename\": \"a00f10a1-0bef-454d-a07a-a6a88b7422bd\",\n        \"path\": \"C:\\\\Users\\\\DEV101\\\\Documents\\\\file_space\\\\source_code\\\\backend\\\\uploads\\\\a00f10a1-0bef-454d-a07a-a6a88b7422bd\",\n        \"size\": 80675,\n        \"mimetype\": \"image/png\",\n        \"encoding\": \"7bit\",\n        \"owner\": \"6754219f8a84eda13950686b\",\n        \"privacy\": \"private\",\n        \"invitedUsers\": [\n            \"675421bb8a84eda13950686f\"\n        ],\n        \"blockedUsers\": [],\n        \"tags\": [\n            \"tag1\",\n            \"tag2\"\n        ],\n        \"createdAt\": \"2024-12-08T22:17:20.894Z\",\n        \"updatedAt\": \"2024-12-09T04:51:34.252Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "successfuly ignore updates if user invited himself",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"updatedAt\": \"2024-12-09T04:51:34.252Z\",        \r\n    \"invitedUsers\":[\"6754219f8a84eda13950686b\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-invited-users/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-invited-users",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "502"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f6-78y2qZ/HNaLWvX0aPtjDyZ3YNHM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:52:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"67561af035c6bb4c4b8aa24a\",\n        \"originalName\": \"2024-11-28 (1).png\",\n        \"filename\": \"a00f10a1-0bef-454d-a07a-a6a88b7422bd\",\n        \"path\": \"C:\\\\Users\\\\DEV101\\\\Documents\\\\file_space\\\\source_code\\\\backend\\\\uploads\\\\a00f10a1-0bef-454d-a07a-a6a88b7422bd\",\n        \"size\": 80675,\n        \"mimetype\": \"image/png\",\n        \"encoding\": \"7bit\",\n        \"owner\": \"6754219f8a84eda13950686b\",\n        \"privacy\": \"private\",\n        \"invitedUsers\": [],\n        \"blockedUsers\": [],\n        \"tags\": [\n            \"tag1\",\n            \"tag2\"\n        ],\n        \"createdAt\": \"2024-12-08T22:17:20.894Z\",\n        \"updatedAt\": \"2024-12-09T04:52:25.108Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid invitedUsers element  - should be string",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"updatedAt\": \"2024-12-09T04:32:49.976Z\",\r\n    \"invitedUsers\":[\"0\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-invited-users/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-invited-users",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-ZUdMdNAEJImjzwrqls8a5kuo3Ug\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:33:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"invitedUsers[0]\\\" must be a string\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid list element - invalid users id format - validation middlware",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"updatedAt\": \"2024-12-09T04:32:49.976Z\",\r\n    \"invitedUsers\":[\"invalidId\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-invited-users/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-invited-users",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"65-OTZbioJlkeQxzXPhR7uXcO2e0+g\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:35:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"Invalid ObjectId format in invitedUsers list\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid id format - database validation",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"updatedAt\": \"2024-12-09T04:32:49.976Z\",\r\n    \"invitedUsers\":[\"invalidId\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-invited-users/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-invited-users",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-YCAXBqrEqP6/noAfQnFYb0HL+xc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:37:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Couldn't update File\",\n        \"details\": \"Database: Invalid value for field '_id'\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid users id in the invitedUsers array",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"updatedAt\": \"2024-12-09T04:32:49.976Z\",\r\n     // valid id format but not a valid user\r\n     // the first is valid user and the second invalid user id\r\n    \"invitedUsers\":[\"6754219f8a84eda13950686b\",\"67561af035c6bb4c4b8aa24a\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-invited-users/67561af035c6bb4c4b8aa24a",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-invited-users",
+										"67561af035c6bb4c4b8aa24a"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"49-Y3ithZ7Dwf9q4UqgTZbeaLsrKQ8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 04:43:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Couldn't update File\",\n        \"details\": \"Invalid user IDs\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "set blocked users",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"updatedAt\": \"2024-12-09T04:52:25.108Z\",\r\n    \"blockedUsers\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{files}}",
+								"set-blocked-users",
+								"67561556bfe1633129caf9a7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error 400: empty request body - validation error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-blocked-users",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-7MiOVsAFx4toY2oiOG/RN2qVUJE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 05:14:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"request body is empty\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: invalid id in the request params",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"updatedAt\": \"2024-12-05T07:06:23.632Z\",\r\n    \"blockedUsers\":[]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-blocked-users",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-yBAuGSsc1oEMd1mtrOSFPH++RUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 05:04:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Error while validating id in the request parameters\",\n        \"details\": \"invalid id in the request parameters\"\n    }\n}"
+						},
+						{
+							"name": "Error 400: blockedUsers must be array",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"updatedAt\": \"2024-12-09T04:52:25.108Z\",\r\n    \"blockedUsers\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-blocked-users",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-DCJtOE9SAI4K1aW+rdwX37NjNlk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 05:18:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Invalid request body\",\n        \"details\": \"\\\"blockedUsers\\\" must be an array\"\n    }\n}"
+						},
+						{
+							"name": "Error 401: unauthorized missing auth header",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"675143fe5b96a30e6a780e4e\",\r\n    \"isPublic\":false,\r\n    \"blockedUsers\":[],\r\n    \"updatedAt\": \"2024-12-05T07:06:23.632Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-blocked-users",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-xnJaONVpu45L4s+nXC++0jvNeU8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 05:01:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication header is missing\"\n    }\n}"
+						},
+						{
+							"name": "Error 401: missing auth token",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"675143fe5b96a30e6a780e4e\",\r\n    \"isPublic\":false,\r\n    \"blockedUsers\":[],\r\n    \"updatedAt\": \"2024-12-05T07:06:23.632Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-blocked-users",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-qpaePk3PsswTBe1HSRFeaeo5V3Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 05:02:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Authentication token is missing\"\n    }\n}"
+						},
+						{
+							"name": "Error 401: invalid token",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\":\"675143fe5b96a30e6a780e4e\",\r\n    \"isPublic\":false,\r\n    \"blockedUsers\":[],\r\n    \"updatedAt\": \"2024-12-05T07:06:23.632Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-blocked-users",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-9dH4MffIflk24PRrW6PgibqD+0o\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 05:03:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Unauthorized: User Authentication failed\",\n        \"details\": \"Invalid token\"\n    }\n}"
+						},
+						{
+							"name": "Error 404: file not found - invalid file id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"updatedAt\": \"2024-12-05T07:06:23.632Z\",\r\n    \"blockedUsers\":[]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-blocked-users",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-OeIH8CPd/hMhzT1lqYKzVQj0V8s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 05:03:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"file not found\",\n        \"details\": \"File with the id '675143fe5b96a30e6a780e4e' not found\"\n    }\n}"
+						},
+						{
+							"name": "Error 409: file modified - updatedAt must match database old file value",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"updatedAt\": \"2024-12-05T07:06:23.632Z\",\r\n    \"blockedUsers\":[]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{files}}/set-blocked-users/67561556bfe1633129caf9a7",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{files}}",
+										"set-blocked-users",
+										"67561556bfe1633129caf9a7"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6a-GZDZcaW+dN5rbxNTFK89WssSZy0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Dec 2024 05:08:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"message\": \"Couldn't update File\",\n        \"details\": \"File has been modified, get the updated one first\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{admin_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

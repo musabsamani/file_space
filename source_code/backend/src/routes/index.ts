@@ -1,15 +1,15 @@
 import { Router } from "express";
-import { router as auth } from "./authRout";
-import { router as healthCheckEndpoint } from "./healthCheckEndpoint";
-import * as upload from "../controllers/upload";
+import { router as auth } from "./authRoute";
+import { router as users } from "./userRoute";
+import { router as files } from "./fileRoute";
 
 export const router = Router();
 
-// a route to handle authentication
+// a route to handle authentication - login and registration
 router.use("/auth", auth);
 
-// a route to handle accessing files
-router.post("/upload", upload.get);
+// a route to handle user management
+router.use("/users", users);
 
-// a root route to verify server status
-router.use("/", healthCheckEndpoint);
+// a route to handle accessing files
+router.use("/files", files);

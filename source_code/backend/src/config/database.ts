@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
-import winston from "winston";
 import { HttpError } from "../errors/HttpError";
-import { MONGO_URL } from "./index";
+import { MONGO_URL } from "./env";
+import { logger } from "../utils/logger";
+import { create } from "domain";
+import { createLogObject } from "../utils/createLogObject";
 
 /**
  * Establishes a connection to the MongoDB database using mongoose.
@@ -24,14 +26,32 @@ export const database = async (): Promise<void> => {
     }
 
     // connect to the database
-    await mongoose.connect(MONGO_URL);
+    const connection = await mongoose.connect(MONGO_URL);
 
-    // if successful connection log a message to the console
-    winston.info("MongoBD Database connected successfully");
+    // get the host of the connection
+    const host = connection.connection.host;
+
+    // if connection success log it
+    logger.info(`MongoDB Database connected successfully to host: ${host}`);
+    logger.info(
+      createLogObject({
+        when: "MongoBD Database connection",
+        status: "success",
+        action: "connect",
+        resource: "database",
+      })
+    );
   } catch (err) {
-    // if connection fails log a message to the console
-    winston.error("Failed to connect to database", err);
-
+    // if connection fails log it
+    logger.error(
+      createLogObject({
+        when: "MongoBD Database connection",
+        status: "fail",
+        action: "connect",
+        resource: "database",
+        error: err,
+      })
+    );
     // stop the server
     process.exit(1);
   }

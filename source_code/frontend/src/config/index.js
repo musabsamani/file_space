@@ -1,5 +1,9 @@
-export const INPUT_TYPES_TEXT_LIKE = ["text", "number", "email", "password"];
-const BASE_URL = "http://localhost:5005/api/v1"
+// backend api
+export const TEXT_INPUT_TYPES = ["text", "number", "email", "password"];
+
+const BASE_URL = import.meta.env.MODE === "production" ? import.meta.env.VITE_PRODUCTION_BASE_URL : import.meta.env.VITE_DEVELOPMENT_BASE_URL;
+
+
 export const apiUrls = {
     baseUrl: BASE_URL,
     login: BASE_URL + "/auth/login",

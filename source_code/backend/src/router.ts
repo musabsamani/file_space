@@ -1,24 +1,16 @@
-import express from "express";
-import { router as routes } from "./routes";
-import { apiUrls } from "./config";
-import cors from "cors";
-import exp from "constants";
 import cookieParser from "cookie-parser";
-import path from "path";
 import { existsSync, mkdirSync } from "fs";
+import express from "express";
 import morgan from "morgan";
-import { handleUndefinedEndpoints } from "./middlewares/handleUndefinedEndpoints";
+import cors from "cors";
+import { allowedOrigins, uploadDir } from "./config/server";
+import { router as routes } from "./routes";
 import { errorMiddleware } from "./middlewares/errorMiddleware";
-import { UPLOAD_FOLDER } from "./constants";
+import { healthCheck } from "./routes/healthCheckRoute";
+import { handleUndefinedEndpoints } from "./middlewares/handleUndefinedEndpoints";
 
 export const router = (app: express.Application) => {
-  // for creating the uploads folder
-  const uploadDir = path.join(
-    path.dirname(__dirname),
-    // remove `/` from the path
-    UPLOAD_FOLDER.replace("/", "")
-  );
-
+  // create the uploads folder if it doesn't exist
   if (!existsSync(uploadDir)) {
     mkdirSync(uploadDir);
   }
@@ -32,17 +24,25 @@ export const router = (app: express.Application) => {
   // for parsing application/json request body
   app.use(express.json());
 
-  // for serving static files on /public
-  app.use(express.static(uploadDir));
-
   // for parsing application/x-www-form-urlencoded
   app.use(express.urlencoded({ extended: true }));
 
   // for enabling cors
-  app.use(cors({ origin: apiUrls.frontendUrl, credentials: true }));
+  app.use(
+    cors({
+      // block any requests that are not from the allowed origins
+      origin: allowedOrigins,
+      // allow credentials for cookies
+      credentials: true,
+    })
+  );
 
-  // for handling incomming requests from the client to /api/v1 routes
+  // for handling incomming requests from the client to `/api/v1` routes
+  // v1 is the version of the api
   app.use("/api/v1", routes);
+
+  // a root route to verify server status
+  app.use(healthCheck());
 
   // for handling undefined endpoints
   app.use(handleUndefinedEndpoints);
