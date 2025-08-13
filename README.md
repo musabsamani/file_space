@@ -1,5 +1,5 @@
 
-# Tech Test - File Upload Management API
+# File Upload Management API
 
 This project is a Node.js-based application that allows users to securely upload and manage image or video files. The API supports user authentication, file tagging, sharing, and tracks statistics like the number of views for each file.
 
